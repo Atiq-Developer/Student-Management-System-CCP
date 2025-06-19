@@ -1,17 +1,17 @@
 # Student-Management-System-CCP
-Student Event Management System- CCP WEB ENGINEERING THEORY PROJECT 
+## Student Event Management System- CCP WEB ENGINEERING THEORY PROJECT 
 This backend API provides comprehensive management for student events, participant registrations, and feedback submissions. Developed as the solution for the Complex Computing Problem (CCP) in the Web Engineering course of the BS (SE) program at FEST, the system offers robust functionality through an interface.
 
 Built with ASP.NET Core 9.0 and Entity Framework Core 8.0+, the API supports both SQL Server and MySQL database systems for flexible deployment.
 
 # Key Features Implemented
-📌 Full CRUD (Create, Read, Update, Delete) operations for Events.
-📌 Participant registration for events, modeling a many-to-many relationship.
-📌 Feedback submission (rating and comment) for events, restricted to after the event date.
-📌 Event searching by name or venue.
-📌 Event filtering by date or venue, and sorting capabilities.
-📌 Input validation and standardized HTTP error handling for API responses.
-📌 Swagger UI integration for interactive API documentation and testing.
+- Full CRUD (Create, Read, Update, Delete) operations for Events.
+- Participant registration for events, modeling a many-to-many relationship.
+- Feedback submission (rating and comment) for events, restricted to after the event date.
+- Event searching by name or venue.
+- Event filtering by date or venue, and sorting capabilities.
+- Input validation and standardized HTTP error handling for API responses.
+- Swagger UI integration for interactive API documentation and testing.
 
 # Prerequisites
 📌 Ensure these components are installed before proceeding:
