@@ -4,161 +4,63 @@ This backend API provides comprehensive management for student events, participa
 
 Built with ASP.NET Core 9.0 and Entity Framework Core 8.0+, the API supports both SQL Server and MySQL database systems for flexible deployment.
 
-Core Functionality
-Event Management: Full lifecycle handling of events with create, read, update, and delete operations
+# Key Features Implemented
+📌 Full CRUD (Create, Read, Update, Delete) operations for Events.
+📌 Participant registration for events, modeling a many-to-many relationship.
+📌 Feedback submission (rating and comment) for events, restricted to after the event date.
+📌 Event searching by name or venue.
+📌 Event filtering by date or venue, and sorting capabilities.
+📌 Input validation and standardized HTTP error handling for API responses.
+📌 Swagger UI integration for interactive API documentation and testing.
 
-Participant Registration: Student enrollment system with many-to-many relationship modeling
+# Prerequisites
+📌 Ensure these components are installed before proceeding:
 
-Feedback Collection: Post-event review submission with temporal validation
+📌 .NET 9.0 SDK
 
-Search & Filtering: Advanced query capabilities for event discovery
+📌 Database system: SQL Server Express or MySQL Community Server
 
-Data Validation: Comprehensive input checking and error handling
+📌 Development environment: Visual Studio 2022 or VS Code
 
-API Documentation: Integrated Swagger UI for interactive testing
-
-Prerequisites
-Ensure these components are installed before proceeding:
-
-.NET 9.0 SDK
-
-Database system: SQL Server Express or MySQL Community Server
-
-Development environment: Visual Studio 2022 or VS Code
-
-Git for version control operations
-
-Configuration Guide
-Clone the above repository:
+# 📝 Configuration Guide
+1. Clone the repository:[ Git for version control operations]
+https://github.com/Atiq-Developer/Student-Management-System-CCP.git
 cd student-event-api
-Configure database connection:
+2. Configure database connection:
 Update appsettings.json with your database credentials:
-
 json
 "ConnectionStrings": {
-  "DefaultConnection": "Server=localhost;Database=StudentEventDB;User Id=sa;Password=yourPassword;TrustServerCertificate=True;"
-}
-Apply database migrations:
-
-bash
+        "DefaultConnection": "Server=03413812449\\SQLEXPRESS02;Database=StudentEventDb;Trusted_Connection=True;MultipleActiveResultSets=true;Encrypt=False"
+    }
+3. Apply database migrations:
 dotnet ef database update
-Launch the application:
-
-bash
+4. Launch the application:
 dotnet run
-API Access Points
+
+# API Access Points
 The API will be accessible at these base URLs:
-
 https://localhost:7121
-
 http://localhost:5253
 
 Interactive documentation is available at:
 https://localhost:7121/swagger
 
-Solution Architecture
-The implementation follows a layered architecture pattern:
+# Project Structure
+The solution follows a layered architecture to ensure separation of concerns:
 
-text
-├── Controllers/          # API endpoint handlers
-│   ├── EventsController.cs
-│   ├── RegistrationsController.cs
-│   └── FeedbackController.cs
-│
-├── Models/               # Database entity definitions
-│   ├── Event.cs
-│   ├── Student.cs
-│   ├── Registration.cs
-│   └── Feedback.cs
-│
-├── DTOs/                 # Data transfer objects
-│   ├── EventDTO.cs
-│   ├── RegistrationDTO.cs
-│   └── FeedbackDTO.cs
-│
-├── Services/             # Business logic layer
-│   ├── EventService.cs
-│   ├── RegistrationService.cs
-│   └── FeedbackService.cs
-│
-├── Data/                 # Database access layer
-│   ├── AppDbContext.cs
-│   └── DbInitializer.cs
-│
-├── Migrations/           # Database schema versioning
-├── Properties/           # Runtime configuration
-├── appsettings.json      # Application settings
-└── Program.cs            # Startup configuration
-System Features
-Event Management
-Create new events with comprehensive details
+- /Controllers: Contains API controllers (e.g., EventsController.cs) that handle incoming HTTP requests and route them to appropriate services.
+- /Models (or /Entities): Houses the EF Core domain entity classes (e.g., Event.cs, Student.cs) that represent the database tables.
+- /DTOs: Includes Data Transfer Objects used to shape data for API requests and responses, aiding in validation and API contract definition.
+- /Services: Contains the business logic layer (e.g., EventService.cs), orchestrating operations between controllers and data access.
+- /Data: Holds the ApplicationDbContext.cs for Entity Framework Core configurations and database interaction.
+- /Migrations: Stores EF Core generated database migration files detailing schema changes.
+- Program.cs: The main entry point for the application, responsible for configuring services and the HTTP request pipeline.
+- appsettings.json: Contains application configuration settings, including database connection strings.
 
-Retrieve upcoming events with sorting options
 
-Modify existing event information
-
-Remove obsolete or canceled events
-
-Participant Registration
-Enroll students in upcoming events
-
-Prevent duplicate registrations
-
-Track registration timestamps
-
-Feedback Processing
-Collect post-event ratings and comments
-
-Ensure feedback is only submitted after event completion
-
-Prevent multiple submissions for same event
-
-Search Capabilities
-Find events by name or venue
-
-Filter results by date range
-
-Sort listings by various criteria
-
-Testing Endpoints
-Create Event
-bash
-POST /api/events
-Content-Type: application/json
-
-{
-  "name": "Tech Symposium",
-  "description": "Annual technology conference",
-  "venue": "Main Auditorium",
-  "startDate": "2025-08-15T09:00:00",
-  "endDate": "2025-08-16T17:00:00"
-}
-Register Participant
-bash
-POST /api/registrations
-Content-Type: application/json
-
-{
-  "eventId": 1,
-  "studentId": 1
-}
-Submit Feedback
-bash
-POST /api/feedback
-Content-Type: application/json
-
-{
-  "eventId": 1,
-  "studentId": 1,
-  "rating": 4,
-  "comment": "Well-organized sessions with relevant content"
-}
-Implementation Details
-The solution addresses these complex computing requirements:
-
-CCP Attribute	Implementation Approach
-Conflicting Requirements	Balanced RESTful design with relational database constraints and real-time validation
-Depth of Analysis	Comprehensive implementation of EF Core relationships and business logic
-Knowledge Depth	Integration of ASP.NET Core, API design patterns, and database optimization
-License
+# CCP Attribute	Implementation Approach
+- Conflicting Requirements	Balanced  design with relational database constraints and real-time validation
+- Depth of Analysis	Comprehensive implementation of EF Core relationships and business logic
+- Knowledge Depth	Integration of ASP.NET Core, API design patterns, and database optimization
+# License
 This project is licensed under the MIT License - see the LICENSE file for details.
